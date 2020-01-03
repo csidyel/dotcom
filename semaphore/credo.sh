@@ -17,7 +17,7 @@ else
   replace=$(join_by \",\" $changed)
   cp config/.credo.exs config/.changed.exs
   sed -i.bak -e "s:apps/:$replace:" config/.changed.exs
-  MIX_ENV=test mix credo --config-file config/.changed.exs
+  mix credo --config-file config/.changed.exs
   exit=$?
   rm config/.changed.exs config/.changed.exs.bak
   exit $exit
