@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
 # Add even more swap space (2GB => 4GB). This is not part of the shared setup
 # script because other CI tasks (e.g. Backstop) need the extra disk space.
@@ -18,9 +18,13 @@ mix compile --warnings-as-errors
 export ERL_CRASH_DUMP=/dev/null
 
 # Restore cached PLTs, rebuild them if needed, then store them back in cache
+ls $SEMAPHORE_CACHE_DIR
 cp $SEMAPHORE_CACHE_DIR/*-$MIX_ENV.plt* _build/$MIX_ENV
+ls _build/$MIX_ENV
 mix dialyzer --plt
+ls _build/$MIX_ENV
 cp _build/$MIX_ENV/*.plt* $SEMAPHORE_CACHE_DIR
+ls $SEMAPHORE_CACHE_DIR
 
 # Dialyze it!
 /usr/bin/time -v mix dialyzer --no-check --halt-exit-status
