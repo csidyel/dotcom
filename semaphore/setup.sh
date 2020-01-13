@@ -36,6 +36,9 @@ asdf plugin-add ruby
 asdf install
 asdf reshim # Needed to pick up languages that were already installed in cache
 
+env
+rm -rf ~/.kiex
+
 # Fetch Elixir dependencies
 #   Note: Must be done before NPM, since some NPM packages are installed from
 #   files inside Elixir packages
