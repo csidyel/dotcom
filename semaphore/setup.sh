@@ -15,7 +15,7 @@ sudo swapon /swapfile
 
 # Ensure cache directories exist
 CACHE=$SEMAPHORE_CACHE_DIR
-mkdir -p $CACHE/asdf/installs $CACHE/gems $CACHE/mix/deps $CACHE/npm
+mkdir -p $CACHE/asdf/installs $CACHE/gems $CACHE/mix/deps $CACHE/npm $CACHE/plt
 
 export MIX_ENV=test
 export MIX_DEPS_PATH=$CACHE/mix/deps
