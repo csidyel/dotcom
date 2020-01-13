@@ -17,6 +17,7 @@ sudo swapon /swapfile
 CACHE=$SEMAPHORE_CACHE_DIR
 mkdir -p $CACHE/asdf/installs $CACHE/gems $CACHE/mix/deps $CACHE/npm $CACHE/plt
 
+unset MIX_ARCHIVES # Set by Semaphore
 export MIX_ENV=test
 export MIX_DEPS_PATH=$CACHE/mix/deps
 export GEM_HOME=$CACHE/gems
@@ -35,9 +36,6 @@ asdf plugin-add ruby
 ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
 asdf reshim # Needed to pick up languages that were already installed in cache
-
-env
-rm -rf ~/.kiex
 
 # Fetch Elixir dependencies
 #   Note: Must be done before NPM, since some NPM packages are installed from
