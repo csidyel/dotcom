@@ -20,9 +20,7 @@ export ERL_CRASH_DUMP=/dev/null
 # Restore cached PLTs, rebuild them if needed, then store them back in cache
 ls $SEMAPHORE_CACHE_DIR/plt
 cp $SEMAPHORE_CACHE_DIR/plt/*-$MIX_ENV.plt* _build/$MIX_ENV || :
-ls _build/$MIX_ENV
 mix dialyzer --plt
-ls _build/$MIX_ENV
 cp _build/$MIX_ENV/*.plt* $SEMAPHORE_CACHE_DIR/plt
 ls $SEMAPHORE_CACHE_DIR/plt
 
