@@ -1,4 +1,5 @@
 defmodule Predictions.Repo do
+  @moduledoc "Repo for V3 API Prediction resources."
   use RepoCache, ttl: :timer.seconds(10), ttl_check: :timer.seconds(2)
   require Logger
   alias Predictions.Parser
@@ -6,7 +7,7 @@ defmodule Predictions.Repo do
 
   @default_params [
     "fields[prediction]":
-      "track,status,departure_time,arrival_time,direction_id,schedule_relationship,stop_sequence",
+      "status,departure_time,arrival_time,direction_id,schedule_relationship,stop_sequence",
     "fields[trip]": "direction_id,headsign,name,bikes_allowed",
     "fields[stop]": "platform_code",
     include: "trip,stop"
