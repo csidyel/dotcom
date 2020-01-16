@@ -209,7 +209,19 @@ const SingleStop = ({
             </div>
             {StopConnections(filteredConnections(routeStop.connections))}
           </div>
-          {StopFeatures(routeStop)}
+          <div className="m-schedule-diagram__card-right">
+            {StopFeatures(routeStop)}
+            <div className="m-schedule-diagram__upcoming">
+              <div>
+                <span className="u-linethrough">2:38 PM</span>{" "}
+                <strong>2:44 PM</strong>
+              </div>
+              <span>
+                <span>Providence</span>
+              </span>
+              · Train 815 · <span className="u-nowrap">Delayed 6 min</span>
+            </div>
+          </div>
         </div>
         {!isDestination && (
           <div className="m-schedule-diagram__footer">

@@ -41,7 +41,7 @@ $line-width: 8px; // width of the colored line in the diagram
     border: $border;
     border-bottom: 0;
     display: flex;
-    padding: $base-spacing $base-spacing / 2;
+    padding: $base-spacing $base-spacing / 2 $base-spacing / 2;
 
     &:last-child {
       border-bottom: $border;
@@ -60,6 +60,10 @@ $line-width: 8px; // width of the colored line in the diagram
 
   .m-schedule-diagram__card-left {
     flex-grow: 1;
+  }
+
+  .m-schedule-diagram__card-right {
+    text-align: right;
   }
 
   .m-schedule-diagram__stop-name {
@@ -106,8 +110,14 @@ $line-width: 8px; // width of the colored line in the diagram
     }
   }
 
+  // Upcoming departures
+  .m-schedule-diagram__upcoming {
+    // something
+  }
+
   // "View schedules" link
   .m-schedule-diagram__footer {
+    margin-top: $base-spacing / 2;
     text-align: center;
 
     .btn {
