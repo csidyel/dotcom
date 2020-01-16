@@ -8,6 +8,8 @@ import {
   accessibleIcon
 } from "../../../helpers/icon";
 import { Alert, Route } from "../../../__v3api";
+import { LiveData } from "./LineDiagram";
+import StopPredictions from "./StopPredictions";
 
 interface Props {
   stop: LineDiagramStop;
@@ -15,6 +17,7 @@ interface Props {
   color: string;
   isOrigin?: boolean;
   isDestination?: boolean;
+  liveData?: LiveData;
 }
 
 const filteredConnections = (
@@ -120,7 +123,7 @@ const StopFeatures = (routeStop: RouteStop): JSX.Element => (
         )}
       </TooltipWrapper>
     ) : null}
-    {routeStop.route!.type === 2 && routeStop.zone && (
+    {routeStop.zone && routeStop.route && routeStop.route.type === 2 && (
       <span className="c-icon__cr-zone m-schedule-diagram__feature-icon">{`Zone ${
         routeStop.zone
       }`}</span>
@@ -155,7 +158,8 @@ const SingleStop = ({
   onClick,
   color,
   isOrigin,
-  isDestination
+  isDestination,
+  liveData
 }: Props): ReactElement<HTMLElement> | null => {
   const {
     stop_data: stopData,
@@ -209,7 +213,15 @@ const SingleStop = ({
             </div>
             {StopConnections(filteredConnections(routeStop.connections))}
           </div>
-          {StopFeatures(routeStop)}
+          <div className="m-schedule-diagram__card-right">
+            {StopFeatures(routeStop)}
+            {!isDestination && liveData && (
+              <StopPredictions
+                headsigns={liveData.headsigns}
+                route={routeStop.route}
+              />
+            )}
+          </div>
         </div>
         {!isDestination && (
           <div className="m-schedule-diagram__footer">

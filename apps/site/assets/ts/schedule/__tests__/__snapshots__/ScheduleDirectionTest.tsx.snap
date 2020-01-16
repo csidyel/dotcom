@@ -294,8 +294,12 @@ exports[`renders with a static map 1`] = `
                 </div>
               </div>
               <div
-                className="m-schedule-diagram__features"
-              />
+                className="m-schedule-diagram__card-right"
+              >
+                <div
+                  className="m-schedule-diagram__features"
+                />
+              </div>
             </div>
             <div
               className="m-schedule-diagram__footer"
@@ -386,8 +390,12 @@ exports[`renders with a static map 1`] = `
                 </div>
               </div>
               <div
-                className="m-schedule-diagram__features"
-              />
+                className="m-schedule-diagram__card-right"
+              >
+                <div
+                  className="m-schedule-diagram__features"
+                />
+              </div>
             </div>
             <div
               className="m-schedule-diagram__footer"
@@ -567,55 +575,59 @@ exports[`renders with a static map 1`] = `
                 </div>
               </div>
               <div
-                className="m-schedule-diagram__features"
+                className="m-schedule-diagram__card-right"
               >
-                <Component>
-                  <span
-                    data-animation="true"
-                    data-original-title="Parking"
-                    data-placement="bottom"
-                    data-selector="true"
-                    data-toggle="tooltip"
-                    data-trigger="hover focus"
-                    title="Parking"
-                  >
-                    <span
-                      aria-hidden="false"
-                      className="notranslate c-svg__icon-parking-default m-schedule-diagram__feature-icon"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "SVG",
-                        }
-                      }
-                    />
-                  </span>
-                </Component>
-                <Component>
-                  <span
-                    data-animation="true"
-                    data-original-title="Accessible"
-                    data-placement="bottom"
-                    data-selector="true"
-                    data-toggle="tooltip"
-                    data-trigger="hover focus"
-                    title="Accessible"
-                  >
-                    <span
-                      aria-hidden="false"
-                      className="notranslate c-svg__icon-acessible-default m-schedule-diagram__feature-icon"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "SVG",
-                        }
-                      }
-                    />
-                  </span>
-                </Component>
-                <span
-                  className="c-icon__cr-zone m-schedule-diagram__feature-icon"
+                <div
+                  className="m-schedule-diagram__features"
                 >
-                  Zone 1A
-                </span>
+                  <Component>
+                    <span
+                      data-animation="true"
+                      data-original-title="Parking"
+                      data-placement="bottom"
+                      data-selector="true"
+                      data-toggle="tooltip"
+                      data-trigger="hover focus"
+                      title="Parking"
+                    >
+                      <span
+                        aria-hidden="false"
+                        className="notranslate c-svg__icon-parking-default m-schedule-diagram__feature-icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "SVG",
+                          }
+                        }
+                      />
+                    </span>
+                  </Component>
+                  <Component>
+                    <span
+                      data-animation="true"
+                      data-original-title="Accessible"
+                      data-placement="bottom"
+                      data-selector="true"
+                      data-toggle="tooltip"
+                      data-trigger="hover focus"
+                      title="Accessible"
+                    >
+                      <span
+                        aria-hidden="false"
+                        className="notranslate c-svg__icon-acessible-default m-schedule-diagram__feature-icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "SVG",
+                          }
+                        }
+                      />
+                    </span>
+                  </Component>
+                  <span
+                    className="c-icon__cr-zone m-schedule-diagram__feature-icon"
+                  >
+                    Zone 1A
+                  </span>
+                </div>
               </div>
             </div>
             <div
@@ -836,50 +848,54 @@ exports[`renders with a static map 1`] = `
                 </div>
               </div>
               <div
-                className="m-schedule-diagram__features"
+                className="m-schedule-diagram__card-right"
               >
-                <Component>
-                  <span
-                    data-animation="true"
-                    data-original-title="Parking"
-                    data-placement="bottom"
-                    data-selector="true"
-                    data-toggle="tooltip"
-                    data-trigger="hover focus"
-                    title="Parking"
-                  >
+                <div
+                  className="m-schedule-diagram__features"
+                >
+                  <Component>
                     <span
-                      aria-hidden="false"
-                      className="notranslate c-svg__icon-parking-default m-schedule-diagram__feature-icon"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "SVG",
+                      data-animation="true"
+                      data-original-title="Parking"
+                      data-placement="bottom"
+                      data-selector="true"
+                      data-toggle="tooltip"
+                      data-trigger="hover focus"
+                      title="Parking"
+                    >
+                      <span
+                        aria-hidden="false"
+                        className="notranslate c-svg__icon-parking-default m-schedule-diagram__feature-icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "SVG",
+                          }
                         }
-                      }
-                    />
-                  </span>
-                </Component>
-                <Component>
-                  <span
-                    data-animation="true"
-                    data-original-title="Accessible"
-                    data-placement="bottom"
-                    data-selector="true"
-                    data-toggle="tooltip"
-                    data-trigger="hover focus"
-                    title="Accessible"
-                  >
+                      />
+                    </span>
+                  </Component>
+                  <Component>
                     <span
-                      aria-hidden="false"
-                      className="notranslate c-svg__icon-acessible-default m-schedule-diagram__feature-icon"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": "SVG",
+                      data-animation="true"
+                      data-original-title="Accessible"
+                      data-placement="bottom"
+                      data-selector="true"
+                      data-toggle="tooltip"
+                      data-trigger="hover focus"
+                      title="Accessible"
+                    >
+                      <span
+                        aria-hidden="false"
+                        className="notranslate c-svg__icon-acessible-default m-schedule-diagram__feature-icon"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "SVG",
+                          }
                         }
-                      }
-                    />
-                  </span>
-                </Component>
+                      />
+                    </span>
+                  </Component>
+                </div>
               </div>
             </div>
             <div
