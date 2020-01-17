@@ -56,12 +56,14 @@ export const TripDetails = ({
     );
   }
 
+  const errorLoadingTrip = (
+    <p>
+      <em>Error loading trip details. Please try again later.</em>
+    </p>
+  );
+
   if (error) {
-    return (
-      <p>
-        <em>Error loading trip details. Please try again later.</em>
-      </p>
-    );
+    return errorLoadingTrip;
   }
 
   if (!tripInfo) return null;
@@ -91,15 +93,19 @@ export const TripDetails = ({
         </tr>
       </thead>
       <tbody className="schedule-table__subtable-tbody">
-        {tripInfo.times.map((departure, index: number) => (
-          <TripStop
-            departure={departure}
-            index={index}
-            showFare={showFare}
-            routeType={tripInfo.route_type}
-            key={departure.schedule.stop.id}
-          />
-        ))}
+        {tripInfo.times.map((departure, index: number) =>
+          departure.schedule ? (
+            <TripStop
+              departure={departure}
+              index={index}
+              showFare={showFare}
+              routeType={tripInfo.route_type}
+              key={departure.schedule.stop.id}
+            />
+          ) : (
+            errorLoadingTrip
+          )
+        )}
       </tbody>
     </table>
   );
