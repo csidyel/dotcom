@@ -281,6 +281,52 @@ defmodule SiteWeb.ScheduleController.FinderApiTest do
       assert %{"times" => [processed_prediction | _]} = response
       assert %{"prediction" => %{"time" => nil}} = processed_prediction
     end
+
+    test "doesn't choke on missing schedules, as in for added-in trips", %{conn: conn} do
+      path =
+        finder_api_path(conn, :trip, %{
+          id: "CR-Trip-Id",
+          route: "CR-Providence",
+          direction: "0",
+          stop: "place-sstat",
+          date: "2020-01-23"
+        })
+
+      schedule_without_time = Map.put(@schedule, :time, nil)
+
+      opts = [
+        trip_fn: fn _, _ -> [schedule_without_time] end,
+        prediction_fn: fn _ -> [@prediction] end
+      ]
+
+      conn
+      |> assign(:trip_info_functions, opts)
+      |> get(path)
+      |> json_response(200)
+    end
+
+    test "doesn't choke on schedules missing time", %{conn: conn} do
+      path =
+        finder_api_path(conn, :trip, %{
+          id: "CR-Trip-Id",
+          route: "CR-Providence",
+          direction: "0",
+          stop: "place-sstat",
+          date: "2020-01-23"
+        })
+
+      schedule_without_time = Map.put(@schedule, :time, nil)
+
+      opts = [
+        trip_fn: fn _, _ -> [schedule_without_time] end,
+        prediction_fn: fn _ -> [@prediction] end
+      ]
+
+      conn
+      |> assign(:trip_info_functions, opts)
+      |> get(path)
+      |> json_response(200)
+    end
   end
 
   defp get_valid_trip_params(%{id: route_id, stop: _, direction: _} = params, conn) do
