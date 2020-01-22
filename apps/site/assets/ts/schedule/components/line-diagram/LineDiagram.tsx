@@ -19,7 +19,6 @@ interface Props {
   directionId: DirectionId;
   routePatternsByDirection: RoutePatternsByDirection;
   services: ServiceInSelector[];
-  ratingEndDate: string;
   stops: SimpleStopMap;
   today: string;
 }
@@ -62,7 +61,6 @@ const LineDiagram = ({
   directionId,
   routePatternsByDirection,
   services,
-  ratingEndDate,
   stops,
   today
 }: Props): ReactElement<HTMLElement> | null => {
@@ -244,7 +242,6 @@ const LineDiagram = ({
             selectedDirection={directionId}
             selectedOrigin={modalState.selectedOrigin.id}
             services={services}
-            ratingEndDate={ratingEndDate}
             stops={stops[directionId]}
             routePatternsByDirection={routePatternsByDirection}
             today={today}
