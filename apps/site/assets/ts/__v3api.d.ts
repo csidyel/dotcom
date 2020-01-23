@@ -242,9 +242,9 @@ export interface Service {
   typicality: ServiceTypicality;
   valid_days: DayInteger[];
   name: string;
-  rating_start_date: string | null;
-  rating_end_date: string | null;
-  rating_description: string | null;
+  rating_start_date: string;
+  rating_end_date: string;
+  rating_description: string;
 }
 
 export interface ServiceWithServiceDate extends Service {

@@ -6,7 +6,9 @@ import {
   groupByType,
   ServiceOptGroupName,
   ServiceByOptGroup,
-  hasMultipleWeekdaySchedules
+  hasMultipleWeekdaySchedules,
+  groupedServiceOptLabel,
+  optGroupNames
 } from "../../../helpers/service";
 import { reducer } from "../../../helpers/fetch";
 import ScheduleTable from "./ScheduleTable";
@@ -17,14 +19,6 @@ import { Journey } from "../__trips";
 
 // until we come up with a good integration test for async with loading
 // some lines in this file have been ignored from codecov
-
-const optGroupNames: ServiceOptGroupName[] = ["current", "holiday", "future"];
-
-const optGroupTitles: { [key in ServiceOptGroupName]: string } = {
-  current: "Current Schedules",
-  holiday: "Holiday Schedules",
-  future: "Future Schedules"
-};
 
 interface Props {
   stopId: string;
@@ -120,7 +114,11 @@ export const ServiceSelector = ({
       (acc, service) => [...acc, ...groupServiceByDate(service)],
       [] as ServiceByOptGroup[]
     )
-    .reduce(groupByType, { current: [], holiday: [], future: [] });
+    .reduce(groupByType, {
+      current: [],
+      holiday: [],
+      future: []
+    });
 
   const defaultServiceId = getDefaultServiceId(services);
 
@@ -142,16 +140,21 @@ export const ServiceSelector = ({
             }}
           >
             {optGroupNames.map((group: ServiceOptGroupName) => {
+              const groupedServices = servicesByOptGroup[group];
+              if (groupedServices.length <= 0) return null;
+
               const multipleWeekdays = hasMultipleWeekdaySchedules(
                 servicesByOptGroup[group].map(service => service.service)
               );
+
+              const groupLabel = groupedServiceOptLabel(group, groupedServices);
 
               return (
                 <ServiceOptGroup
                   key={group}
                   group={group}
-                  label={optGroupTitles[group]}
-                  services={servicesByOptGroup[group]}
+                  label={groupLabel}
+                  services={groupedServices}
                   multipleWeekdays={multipleWeekdays}
                 />
               );

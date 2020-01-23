@@ -23,54 +23,46 @@ Array [
         onChange={[Function]}
       >
         <optgroup
-          label="Current Schedules"
+          label="Holidays"
+        >
+          <option
+            value="Bastille-Day"
+          >
+            Bastille Day, Jul 14
+          </option>
+        </optgroup>
+        <optgroup
+          label="Future Schedules (Test, Jul 2 to Aug 30)"
         >
           <option
             value="BUS319-O-Wdy-02"
           >
-            Monday - Friday schedule
-            , 
-            ends August 30
+            Weekday schedule
+            , Test
           </option>
           <option
             value="BUS319-D-Wdy-02"
           >
             Friday schedule
-            , 
-            ends August 30
+            , Test
           </option>
           <option
             value="BUS319-P-Sa-02"
           >
             Saturday schedule
-            , 
-            ends August 31
+            , Test
           </option>
           <option
             value="BUS319-Q-Su-02"
           >
             Sunday schedule
-            , 
-            ends August 25
+            , Test
           </option>
-        </optgroup>
-        <optgroup
-          label="Holiday Schedules"
-        >
-          <option
-            value="Bastille-Day"
-          >
-            Bastille Day, July 14
-          </option>
-        </optgroup>
-        <optgroup
-          label="Future Schedules"
-        >
           <option
             value="BUS319-storm"
           >
             Storm service, 
-            starts July 15
+            Jul 15 to Jul 15
           </option>
         </optgroup>
       </select>

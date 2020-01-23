@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
 import { ServiceOptGroupName } from "../../../helpers/service";
-import { Service, DayInteger, ServiceWithServiceDate } from "../../../__v3api";
+import { Service, DayInteger } from "../../../__v3api";
 
 interface Props {
-  service: ServiceWithServiceDate;
+  service: Service;
   group: ServiceOptGroupName;
   servicePeriod: string;
   multipleWeekdays: boolean;
@@ -39,9 +39,11 @@ export const serviceDays = ({
   if (validDays.length === 1) return `${dayIntegerToString(validDays[0])}`;
 
   if (daysAreConsecutive(validDays, true)) {
-    return `${dayIntegerToString(validDays[0])} - ${dayIntegerToString(
-      validDays[validDays.length - 1]
-    )}`;
+    return validDays[0] === 1 && validDays[validDays.length - 1] === 5
+      ? "Weekday"
+      : `${dayIntegerToString(validDays[0])} - ${dayIntegerToString(
+          validDays[validDays.length - 1]
+        )}`;
   }
 
   return `${validDays.map(dayIntegerToString).join(", ")}`;
@@ -71,8 +73,9 @@ const ServiceOption = ({
       {isMultipleWeekday
         ? `${serviceDays(service)} schedule`
         : service.description}
-      {group !== "holiday" ? ", " : " "}
-      {servicePeriod}
+      {group !== "holiday" &&
+        service.rating_description &&
+        `, ${service.rating_description}`}
     </option>
   );
 };

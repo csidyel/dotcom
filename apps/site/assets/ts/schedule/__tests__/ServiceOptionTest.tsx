@@ -16,7 +16,10 @@ const service: Service = {
   type: "weekday",
   typicality: "typical_service",
   valid_days: [1, 2, 3, 4, 5],
-  name: "weekday"
+  name: "weekday",
+  rating_start_date: "2019-02-25",
+  rating_end_date: "2019-10-25",
+  rating_description: "Test"
 };
 
 describe("serviceDays", () => {
@@ -43,13 +46,22 @@ describe("serviceDays", () => {
     expect(serviceDays(friday)).toBe("Friday");
   });
 
-  it("returns consecutive days as Monday - Friday", () => {
-    expect(serviceDays(service)).toBe("Monday - Friday");
-    const monToWed: Service = { ...service, valid_days: [1, 2, 3] };
-    expect(serviceDays(monToWed)).toBe("Monday - Wednesday");
+  it.each`
+    valid_days   | day1           | day2
+    ${[1, 2, 3]} | ${"Monday"}    | ${"Wednesday"}
+    ${[3, 4, 5]} | ${"Wednesday"} | ${"Friday"}
+  `(
+    "returns consecutive days as $day1 - $day2",
+    ({ valid_days, day1, day2 }) => {
+      const days: Service = { ...service, valid_days };
+      expect(serviceDays(days)).toBe(`${day1} - ${day2}`);
+    }
+  );
 
-    const wedToFri: Service = { ...service, valid_days: [3, 4, 5] };
-    expect(serviceDays(wedToFri)).toBe("Wednesday - Friday");
+  it("returns consecutive days Monday to Friday as 'Weekday'", () => {
+    const dailyService: Service = { ...service, valid_days: [1, 2, 3, 4, 5] };
+    expect(serviceDays(dailyService)).not.toBe("Monday - Friday");
+    expect(serviceDays(dailyService)).toBe("Weekday");
   });
 
   it("lists all non-consecutive days", () => {

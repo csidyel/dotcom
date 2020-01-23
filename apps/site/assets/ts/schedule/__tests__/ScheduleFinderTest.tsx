@@ -15,7 +15,6 @@ const services: ServiceInSelector[] = [
     typicality: "typical_service",
     type: "weekday",
     start_date: "2019-07-08",
-    service_date: "2019-07-16",
     removed_dates_notes: {},
     removed_dates: [],
     name: "Weekday",
@@ -24,6 +23,9 @@ const services: ServiceInSelector[] = [
     description: "Weekday schedule",
     added_dates_notes: {},
     added_dates: [],
+    rating_start_date: "2019-06-25",
+    rating_end_date: "2019-10-25",
+    rating_description: "Test",
     "default_service?": true
   },
   {
@@ -31,7 +33,6 @@ const services: ServiceInSelector[] = [
     typicality: "typical_service",
     type: "saturday",
     start_date: "2019-07-13",
-    service_date: "2019-07-16",
     removed_dates_notes: {},
     removed_dates: [],
     name: "Saturday",
@@ -40,6 +41,9 @@ const services: ServiceInSelector[] = [
     description: "Saturday schedule",
     added_dates_notes: {},
     added_dates: [],
+    rating_start_date: "2019-06-25",
+    rating_end_date: "2019-10-25",
+    rating_description: "Test",
     "default_service?": false
   },
   {
@@ -47,7 +51,6 @@ const services: ServiceInSelector[] = [
     typicality: "typical_service",
     type: "sunday",
     start_date: "2019-07-14",
-    service_date: "2019-07-16",
     removed_dates_notes: {},
     removed_dates: [],
     name: "Sunday",
@@ -56,6 +59,9 @@ const services: ServiceInSelector[] = [
     description: "Sunday schedule",
     added_dates_notes: {},
     added_dates: [],
+    rating_start_date: "2019-06-25",
+    rating_end_date: "2019-10-25",
+    rating_description: "Test",
     "default_service?": false
   }
 ];
